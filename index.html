@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEALS</title>
+    <!-- Font Awesome Icons (for the social media icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .wh-widget-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+        }
+
+        header {
+            background-color:green;
+            color: red;
+            /* Change this color to a contrasting one */
+            text-align: center;
+            padding: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Style for the tab container */
+
+        .tabs {
+            display: flex;
+            /* Display tabs horizontally */
+            background-color: #f0f0f0;
+            /* Background color of the tab container */
+            padding: 10px;
+            /* Add some padding for spacing */
+        }
+
+        /* Style for each individual tab */
+
+        .tab {
+            text-decoration: none;
+            /* Remove underlines from links */
+            padding: 10px 20px;
+            /* Add padding to the tabs for spacing */
+            background-color: #ffffff;
+            /* Background color of the tabs */
+            border: 1px solid #ccc;
+            /* Add a border to the tabs */
+            margin-right: 10px;
+            /* Add some margin to separate tabs */
+            color: #333;
+            /* Text color */
+            font-weight: bold;
+            /* Bold text */
+            border-radius: 5px;
+            /* Rounded corners for tabs */
+            transition: background-color 0.3s ease;
+            /* Smooth background color transition */
+        }
+
+        /* Style for the active tab */
+
+        .tab.active {
+            background-color: #007bff;
+            /* Active tab background color */
+            color: #fff;
+            /* Active tab text color */
+        }
+
+        /* General styling */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h6 {
+            text-align: center;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        
+        }
+
+        .header {
+            background-color: black;
+            color: red;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .header-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .header-subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            background-color: green;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            background-color: red;
+        }
+
+        h4 {
+            text-align: center;
+            background-color: green;
+        }
+
+        h6 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            background-color: green;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-align: centre;
+        }
+
+        .subheadings-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .subheading {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 20px;
+        }
+
+        .subheading a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* New styles for product boxes */
+
+        .product {
+            padding: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 128, 0, 0.5);
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Scroll-down show content effect */
+
+        .hidden-content {
+            display: none;
+        }
+
+        .show-content:hover .hidden-content {
+            display: block;
+        }
+
+        /* Button styles */
+
+        .buy-now {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        .buy-now:hover {
+            background-color: #3e8e41;
+        }
+
+        .buy-now:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .buy-now-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2A1DEC;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-now-btn:hover {
+            background-color: #6184B1;
+        }
+
+        .product {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            /* Horizontal box shadow */
+            margin-bottom: 20px;
+            /* Adds space between product boxes */
+            text-align: center;
+            /* Center the content horizontally */
+            .payment-info {
+                display: none;
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px solid #ccc;
+            }
+            .payment-info h1,
+            .payment-info h2,
+            .payment-info ul {
+                margin: 5px 0;
+            }
+            .payment-info p {
+                color: red;
+                /* Change the color to green */
+            }
+            /* Responsive adjustments */
+            @media screen and (max-width: 600px) {
+                .product {
+                    max-width: 400%;
+                    /* Adjust maximum width for smaller screens */
+                }
+            }
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+            h3 {
+                color: green;
+                /* Text color */
+                font-size: 20px;
+                /* Font size */
+                font-family: Arial, sans-serif;
+                /* Font family */
+                background-color: lightgreen;
+                /* Background color */
+                text-align: center;
+            }
+            header {
+                background-color: green;
+                color: #fff;
+                text-align: center;
+                padding: 10px;
+            }
+            nav {
+                display: flex;
+                justify-content: center;
+                background-color: green;
+                padding: 10px;
+            }
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                padding: 10px 20px;
+                margin: 0 10px;
+            }
+        }
+
+        /* Button styles */
+
+        .buy-now {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        .buy-now:hover {
+            background-color: #3e8e41;
+        }
+
+        .buy-now:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        /* Style for the tab container */
+
+        .tabs {
+            display: flex;
+            /* Display tabs horizontally */
+            background-color: #f0f0f0;
+            /* Background color of the tab container */
+            padding: 10px;
+            /* Add some padding for spacing */
+        }
+
+        /* Style for each individual tab */
+
+        .tab {
+            text-decoration: none;
+            /* Remove underlines from links */
+            padding: 10px 20px;
+            /* Add padding to the tabs for spacing */
+            background-color: #ffffff;
+            /* Background color of the tabs */
+            border: 1px solid #ccc;
+            /* Add a border to the tabs */
+            margin-right: 10px;
+            /* Add some margin to separate tabs */
+            color: #333;
+            /* Text color */
+            font-weight: bold;
+            /* Bold text */
+            border-radius: 5px;
+            /* Rounded corners for tabs */
+            transition: background-color 0.3s ease;
+            /* Smooth background color transition */
+        }
+
+        /* Style for the active tab */
+
+        .tab.active {
+            background-color: #007bff;
+            /* Active tab background color */
+            color: #fff;
+            /* Active tab text color */
+        }
+
+        /* General styling */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: white;
+            color: tomato;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color:green;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+        }
+        nav a :hover{
+            background-color: #5DC9A5;
+
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        aside {
+            float: right;
+            width: 200px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: green;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        footer {
+            padding: 10px;
+            margin-top: 12px;
+            
+        }
+
+        .content-container {
+            border: 8px solid #0A6346;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            flex: 0 0 30%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        .card-img {
+            max-width: 100%;
+            max-height: 100px;
+        }
+
+        section h2 {
+            color: white;
+            /* Change color as needed */
+            font-size: 24px;
+            /* Change font size as needed */
+            text-align: center;
+            /* Adjust text alignment as needed */
+            margin-bottom: 20px;
+            /* Adjust margin as needed */
+            font-size: bold;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CAPITAL AIRTIME DEALS</h1>
+    </header>
+    <nav>
+        <a href="#contact-us">Contact Us</a>
+        <a href="#welcome">About Us</a>
+    </nav>
+    <section id="welcome">
+        <div class="content-container">
+            <h2>Welcome to capital airtime data deals</h2>
+            <p>
+                Capital Bundles is a <strong>Trusted and Legit</strong> that offers discounted <strong>data bundles</strong>  that are <strong>affordable and cheap</strong>. Whether you have <strong>OKOA JAHAZI</strong> or not, Capital airtime will still load data bundles to your
+                number.
+            </p>
+        </div>
+
+        <div>
+            <br>
+            <div class="content-container">
+                <div class="product">
+                    <img src="https://www.safaricom.co.ke/images/main.png" alt="Safaricom Logo" style="max-width: 25%; height: auto;">
+                    <p>1.25GB VALID TILL MIDNIGHT @ SHS 55</p>
+                    <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo1')">Buy Now</button>
+                    <div class="payment-info" id="paymentInfo1">
+                        <h3>HOW TO PAY</h3>
+                        <ul>
+                            <li>LIPA NA MPESA</li>
+                            <li>BUY GOODS AND SERVICES</li>
+                        </ul>
+                        <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+                        <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="product">
+                    <p>250MB VALID FOR 24 HOURS @ SHS 20</p>
+                    <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo2')">Buy Now</button>
+                    <div class="payment-info" id="paymentInfo2">
+                        <h3>HOW TO PAY</h3>
+                        <ul>
+                            <li>LIPA NA MPESA</li>
+                            <li>BUY GOODS AND SERVICES</li>
+                        </ul>
+                        <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+                        <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="product">
+                    <p>1GB VALID FOR 1 HOUR @ SHS 19</p>
+                    <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo3')">Buy Now</button>
+                    <div class="payment-info" id="paymentInfo3">
+                        <h3>HOW TO PAY</h3>
+                        <ul>
+                            <li>LIPA NA MPESA</li>
+                            <li>BUY GOODS AND SERVICES</li>
+                        </ul>
+                        <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+                        <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="product">
+                    <p>1.5GB VALID FOR 3 HOURS @ SHS 50</p>
+                    <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo4')">Buy Now</button>
+                    <div class="payment-info" id="paymentInfo4">
+                        <h3>HOW TO PAY</h3>
+                        <ul>
+                            <li>LIPA NA MPESA</li>
+                            <li>BUY GOODS AND SERVICES</li>
+                        </ul>
+                        <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+                        <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="product">
+                    <p>350MB VALID FOR 7 DAYS @ SHS 49</p>
+                    <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo5')">Buy Now</button>
+                    <div class="payment-info" id="paymentInfo5">
+                        <h3>HOW TO PAY</h3>
+                        <ul>
+                            <li>LIPA NA MPESA</li>
+                            <li>BUY GOODS AND SERVICES</li>
+                        </ul>
+                        <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+                        <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="product">
+                    <p>1GB VALID FOR 24 HOURS @ SHS 99</p>
+                    <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo6')">Buy Now</button>
+                    <div class="payment-info" id="paymentInfo6">
+                        <h3>HOW TO PAY</h3>
+                        <ul>
+                            <li>LIPA NA MPESA</li>
+                            <li>BUY GOODS AND SERVICES</li>
+                        </ul>
+                        <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+                        <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="product">
+                    <p>2.5GB VALID FOR 7 DAYS @ SHS 300</p>
+                    <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo7')">Buy Now</button>
+                    <div class="payment-info" id="paymentInfo7">
+                        <h3>HOW TO PAY</h3>
+                        <ul>
+                            <li>LIPA NA MPESA</li>
+                            <li>BUY GOODS AND SERVICES</li>
+                        </ul>
+                        <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+                        <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="product">
+                    <p>6GB VALID FOR 7 DAYS SHS 700</p>
+                    <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo8')">Buy Now</button>
+                    <div class="payment-info" id="paymentInfo8">
+                        <h3>HOW TO PAY</h3>
+                        <ul>
+                            <li>LIPA NA MPESA</li>
+                            <li>BUY GOODS AND SERVICES</li>
+                        </ul>
+                        <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+                        <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+                    </div>
+                </div>
+                <!-- Add more product sections similarly -->
+               
+                <section>
+                    <h2>BUY THESE AVAILABLE PRODUCTS</h2>
+                </section>
+                <div>
+                    <br>
+                    <div class="flex-container">
+                        <div class="card"><img src="https://res.cloudinary.com/simplotel/image/upload/w_5000,h_3333/x_0,y_396,w_5000,h_2813,r_0,c_crop,q_80,fl_progressive/w_750,f_auto,c_fit/boma-inn-eldoret/Facade_of_Boma_Inn_Eldoret_4" alt="House" class="card-img" /><br><strong>House</strong><br>Location: Eldoret<br>Contacts: 0727296594<br>Price: shs 2,580,000,856.00<br></div>
+                        <div class="card"><img src="uploads/Screenshot_20240129-222336_1.jpg" alt="bingwa sokoni offers" class="card-img" /><br><strong>bingwa sokoni offers</strong><br>Location: Eldoret<br>Contacts: 0727296594<br>Price: shs 55.00<br></div>
+                    </div>
+                </div>
+                <section id="contact-us" style="text-align: center;">
+                    <h2>Contact Us</h2>
+                    <p>
+                      <strong>You can contact us at:</strong>
+                      <ul>
+                        <li><strong>Phone: +254 727296594</strong></li>
+                        <br>
+                        <li><strong>Email:</strong> <a href="mailto:info@capitaldatadeals.co.ke">info@capitaldatadeals.co.ke</a></li>
+                      </ul>
+                    </p>
+                  </section>
+                <!-- footer section -->
+                <footer>
+
+                    <p>&copy; 2024 by Capitaldeals. All Rights Reserved</p>
+                    
+                </footer>
+
+                <script>
+
+                
+
+
+
+
+                    document.addEventListener('DOMContentLoaded', function() {
+                      const navLinks = document.querySelectorAll('nav a');
+                
+                      navLinks.forEach(function(link) {
+                        link.addEventListener('click', function(e) {
+                          e.preventDefault();
+                
+                          const targetId = this.getAttribute('href').substring(1); // Get the target section id without the hash symbol
+                          const targetSection = document.getElementById(targetId);
+                
+                          // Scroll smoothly to the target section
+                          targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                          });
+                        });
+                      });
+                    });
+
+                    document.addEventListener('contextmenu', function(e) {
+                        e.preventDefault();
+                    });
+
+                    function togglePaymentInfo(paymentInfoId) {
+                        var paymentInfo = document.getElementById(paymentInfoId);
+                        var buyButton = paymentInfo.previousElementSibling; // Get the button associated with the payment info
+
+                        if (paymentInfo.style.display === 'none' || paymentInfo.style.display === '') {
+                            paymentInfo.style.display = 'block';
+                            buyButton.disabled = true; // Disable the button after showing payment info
+                        } else {
+                            paymentInfo.style.display = 'none';
+                            buyButton.disabled = false; // Enable the button again if payment info is hidden
+                        }
+                    }
+
+                    (function() {
+                var options = {
+                    whatsapp: "254727296594", // WhatsApp number
+                    call: "254727296594", // Call phone number
+                    call_to_action: "Hello! Ask us anything, we are ready to help you!", // Call to action
+                    button_color: "#2A1DEC", // Color of button
+                    position: "left", // Position set to 'left'
+                    order: "whatsapp,call", // Order of buttons
+                    pre_filled_message: "Dear Customer, Capital Deals Customer Support!How may we help you" // WhatsApp pre-filled message
+                };
+                var proto = document.location.protocol,
+                    host = "getbutton.io",
+                    url = proto + "//static." + host;
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = url + '/widget-send-button/js/init.js';
+                s.onload = function() {
+                    WhWidgetSendButton.init(host, proto, options);
+                };
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            })();
+                  </script>
+</body>
+
+</html>
