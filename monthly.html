@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPITAL DATA BUNDLES </title>
+    <!-- Font Awesome Icons (for the social media icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .back-to-home {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-to-home:hover {
+            background-color: #2A1DEC;
+        }
+
+        /* Reset some default styles */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Style for the tab container */
+
+        .tabs {
+            display: flex;
+            /* Display tabs horizontally */
+            background-color: #f0f0f0;
+            /* Background color of the tab container */
+            padding: 10px;
+            /* Add some padding for spacing */
+        }
+
+        /* Style for each individual tab */
+
+        .tab {
+            text-decoration: none;
+            /* Remove underlines from links */
+            padding: 10px 20px;
+            /* Add padding to the tabs for spacing */
+            background-color: #ffffff;
+            /* Background color of the tabs */
+            border: 1px solid #ccc;
+            /* Add a border to the tabs */
+            margin-right: 10px;
+            /* Add some margin to separate tabs */
+            color: #333;
+            /* Text color */
+            font-weight: bold;
+            /* Bold text */
+            border-radius: 5px;
+            /* Rounded corners for tabs */
+            transition: background-color 0.3s ease;
+            /* Smooth background color transition */
+        }
+
+        /* Style for the active tab */
+
+        .tab.active {
+            background-color: #007bff;
+            /* Active tab background color */
+            color: #fff;
+            /* Active tab text color */
+        }
+
+        /* General styling */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h6 {
+            text-align: center;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .header {
+            background-color: white;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .header-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .header-subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            background-color: green;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            background-color: green;
+        }
+
+        h4 {
+            text-align: center;
+            background-color: green;
+        }
+
+        h6 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            background-color: green;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-align: centre;
+        }
+
+        .subheadings-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .subheading {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 20px;
+        }
+
+        .subheading a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* New styles for product boxes */
+
+        .product {
+            padding: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 128, 0, 0.5);
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Scroll-down show content effect */
+
+        .hidden-content {
+            display: none;
+        }
+
+        .show-content:hover .hidden-content {
+            display: block;
+        }
+
+        /* Button styles */
+
+        .buy-now {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        .buy-now:hover {
+            background-color: #3e8e41;
+        }
+
+        .buy-now:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        .product {
+            width: 100%;
+            /* Adjust width as needed */
+            max-width: 400px;
+            /* Limit the maximum width */
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            /* Horizontal box shadow */
+            margin-bottom: 20px;
+            /* Adds space between product boxes */
+            text-align: center;
+            /* Center the content horizontally */
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .buy-now-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2A1DEC;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-now-btn:hover {
+            background-color: #005f7f;
+        }
+
+        .payment-info {
+            display: none;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .payment-info h1,
+        .payment-info h2,
+        .payment-info ul {
+            margin: 5px 0;
+        }
+
+        .payment-info p {
+            color: red;
+            /* Change the color to green */
+        }
+
+        /* Responsive adjustments */
+
+        @media screen and (max-width: 600px) {
+            .product {
+                max-width: 400%;
+                /* Adjust maximum width for smaller screens */
+            }
+        }
+    </style>
+</head>
+<h3>Buy GoMonthly Data Bundles and Minutes</h3>
+
+<body>
+    <div class="product">
+        <p>1.2GB VALID FOR 30 DAYS @ SHS 250 </p>
+        <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo1')">Buy Now</button>
+        <div class="payment-info" id="paymentInfo1">
+            <h3>HOW TO PAY</h3>
+            <ul>
+                <li>LIPA NA MPESA</li>
+                <li>BUY GOODS AND SERVICES</li>
+            </ul>
+            <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+            <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+        </div>
+    </div>
+    <br>
+    <div class="product">
+        <p>300Min VALID FOR 30 DAYS @ SHS 500</p>
+        <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo2')">Buy Now</button>
+        <div class="payment-info" id="paymentInfo2">
+            <h3>HOW TO PAY</h3>
+            <ul>
+                <li>LIPA NA MPESA</li>
+                <li>BUY GOODS AND SERVICES</li>
+            </ul>
+            <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+            <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+        </div>
+    </div>
+    <br>
+    <div class="product">
+        <p>800Min VALID FOR 30 DAYS @ SHS 1000</p>
+        <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo3')">Buy Now</button>
+        <div class="payment-info" id="paymentInfo3">
+            <h1>HOW TO PAY</h1>
+            <ul>
+                <li>LIPA NA MPESA</li>
+                <li>BUY GOODS AND SERVICES</li>
+            </ul>
+            <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+            <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+        </div>
+    </div>
+    <br>
+    <div class="product">
+        <p>8GB plus 400min VALID FOR 30 DAYS @ SHS 1000</p>
+        <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo4')">Buy Now</button>
+        <div class="payment-info" id="paymentInfo4">
+            <h3>HOW TO PAY</h3>
+            <ul>
+                <li>LIPA NA MPESA</li>
+                <li>BUY GOODS AND SERVICES</li>
+            </ul>
+            <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+            <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+        </div>
+    </div>
+    <br>
+    <div class="product">
+        <p>2.5GB VALID FOR 30 DAYS @ SHS 500</p>
+        <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo5')">Buy Now</button>
+        <div class="payment-info" id="paymentInfo5">
+            <h1>HOW TO PAY</h1>
+            <ul>
+                <li>LIPA NA MPESA</li>
+                <li>BUY GOODS AND SERVICES</li>
+            </ul>
+            <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+            <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+        </div>
+    </div>
+    <br>
+    <div class="product">
+        <p>10GB VALID FOR 30 DAYS @ SHS 1000</p>
+        <button class="buy-now-btn" onclick="togglePaymentInfo('paymentInfo6')">Buy Now</button>
+        <div class="payment-info" id="paymentInfo6">
+            <h3>HOW TO PAY</h3>
+            <ul>
+                <li>LIPA NA MPESA</li>
+                <li>BUY GOODS AND SERVICES</li>
+            </ul>
+            <p>ENTER TILL NUMBER 4188526. ENTER YOUR PIN.</p>
+            <h2>Dear Customer, data will be sent to the number that has paid.</h2>
+        </div>
+    </div>
+    <a href="./index.html" class="back-to-home">Back to Home</a>
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        function togglePaymentInfo(paymentInfoId) {
+            var paymentInfo = document.getElementById(paymentInfoId);
+            var buyButton = paymentInfo.previousElementSibling; // Get the button associated with the payment info
+
+            if (paymentInfo.style.display === 'none' || paymentInfo.style.display === '') {
+                paymentInfo.style.display = 'block';
+                buyButton.disabled = true; // Disable the button after showing payment info
+            } else {
+                paymentInfo.style.display = 'none';
+                buyButton.disabled = false; // Enable the button again if payment info is hidden
+            }
+        }
+    </script>
+</body>
+
+</html>

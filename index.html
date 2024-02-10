@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEALS</title>
+    <title>Capital-Deals</title>
     <!-- Font Awesome Icons (for the social media icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -513,6 +513,11 @@
             font-size: bold;
         }
 
+        .social-links a {
+      display: inline-block; /* Display links inline */
+      margin-right: 10px; /* Add margin between links */
+    }
+
         
     </style>
 </head>
@@ -524,6 +529,7 @@
     <nav>
         <a href="#contact-us">Contact Us</a>
         <a href="#welcome">About Us</a>
+        <a href="monthly.html"><strong>GO MONTHLY</strong></a>
     </nav>
     <section id="welcome">
         <div class="content-container">
@@ -668,9 +674,41 @@
                       <ul>
                         <li><strong>Phone: +254 727296594</strong></li>
                         <br>
-                        <li><strong>Email:</strong> <a href="mailto:info@capitaldatadeals.co.ke">info@capitaldatadeals.co.ke</a></li>
+                        <li><strong>Email:</strong> <a href="mailto:dankiplimo201@gmail.com">info@capitaldatadeals.co.ke</a></li>
                       </ul>
                     </p>
+
+                    <div class="social-links">
+
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://capitaldata-deals.netlify.app/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-square fa-2x"></i>
+                          </a>
+                          
+                              <!-- WhatsApp Share Button -->
+                              <a href="whatsapp://send?text=https://capitaldata-deals.netlify.app/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp-square fa-2x"></i>
+                          </a>
+                          
+                              <!-- Twitter Share Button -->
+                              <a href="https://twitter.com/intent/tweet?url=https://capitaldata-deals.netlify.app/&text=Check%20out%20this%20website:" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter-square fa-2x"></i>
+                          </a>
+                          
+                              <!-- Instagram Share Button -->
+                              <a href="https://www.instagram.com/sharer.php?u=https://capitaldata-deals.netlify.app/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram-square fa-2x"></i>
+                          </a>
+                          
+                              <!-- Telegram Share Button -->
+                              <a href="https://t.me/share/url?url=https://capitaldata-deals.netlify.app/&text=Check%20out%20this%20website:" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-telegram-plane fa-2x"></i>
+                          </a>
+
+                    </div>
+
+
+
+                   
                   </section>
                 <!-- footer section -->
                 <footer>
@@ -686,23 +724,23 @@
 
 
 
-                    document.addEventListener('DOMContentLoaded', function() {
-                      const navLinks = document.querySelectorAll('nav a');
-                
-                      navLinks.forEach(function(link) {
-                        link.addEventListener('click', function(e) {
-                          e.preventDefault();
-                
-                          const targetId = this.getAttribute('href').substring(1); // Get the target section id without the hash symbol
-                          const targetSection = document.getElementById(targetId);
-                
-                          // Scroll smoothly to the target section
-                          targetSection.scrollIntoView({
-                            behavior: 'smooth'
-                          });
-                        });
-                      });
+document.addEventListener('DOMContentLoaded', function() {
+            const internalNavLinks = document.querySelectorAll('nav a[href^="#"]');
+
+            internalNavLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href').substring(1); // Get the target section id without the hash symbol
+                    const targetSection = document.getElementById(targetId);
+
+                    // Scroll smoothly to the target section
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
                     });
+                });
+            });
+        });
 
                     document.addEventListener('contextmenu', function(e) {
                         e.preventDefault();
